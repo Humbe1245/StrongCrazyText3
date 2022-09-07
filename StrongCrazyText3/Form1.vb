@@ -1,10 +1,8 @@
 ﻿Imports System.Speech.AudioFormat
 Imports System.Speech.Synthesis
-Imports System.Speech
 Public Class FrmPrincipal
-    Public sintetizadorDescarga As New Synthesis.SpeechSynthesizer
+    Public sintetizadorDescarga As New SpeechSynthesizer
     Dim textolenght As Integer
-    Dim posText As Integer
     Public Sub FrmPrincipal_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'Dim current = sintetizador.GetCurrentlySpokenPrompt()
         sintetizador.Volume = TbVolumen.Value
@@ -125,7 +123,7 @@ Public Class FrmPrincipal
         Try
             ProgressBar1.Value = ((e.CharacterPosition + e.CharacterCount) / textolenght) * 100
             'TxtCall.Text = textolenght & " " & ((e.CharacterPosition + e.CharacterCount) / textolenght) * 100
-            posText = e.CharacterPosition
+            Dim posText = e.CharacterPosition
             TxtTexto.SelectionStart = e.CharacterPosition
             TxtTexto.SelectionLength = e.CharacterCount
             TxtTexto.Select()
